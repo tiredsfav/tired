@@ -1,16 +1,14 @@
 <div align="center">
 
-# K Engine
+# Tired Engine
 
-### A work-in-progress game engine written in C
+**A custom game engine built from the ground up in C.**
 
-Build the game yourself.  
-K Engine provides the systems underneath it.
+*You make the game. Tired Engine handles the rest.*
 
 ![Status](https://img.shields.io/badge/status-work--in--progress-orange)
 ![Language](https://img.shields.io/badge/language-C-blue)
-![Renderer](https://img.shields.io/badge/renderer-Vulkan-red)
-![Build System](https://img.shields.io/badge/build-Make-informational)
+![Platforms](https://img.shields.io/badge/platforms-Windows%20%7C%20Linux%20%7C%20macOS-informational)
 
 </div>
 
@@ -18,40 +16,65 @@ K Engine provides the systems underneath it.
 
 ## About
 
-K Engine is a low-level game engine focused on providing the fundamental systems needed to create a game, while leaving the actual game architecture and gameplay up to the developer.
+Tired Engine is a **work-in-progress game engine** built entirely from scratch by a
+**single developer**.
 
-The engine currently provides:
+The goal is to provide the systems needed to build an application or game while
+leaving the actual game and its architecture in the developer's hands.
 
-- Application and window management
-- Vulkan rendering
+Tired Engine currently includes its own:
+
+- Application & window system
+- Renderer
+- Input system
+- Event system
+- Logger
+- Dynamic array (`darray`)
+- String system (`kstring`)
+- Memory system (`kmemory`)
+- Math library
 - Core engine systems
-- DLL exports
-- Makefile-based builds
-
-> **You make the game. The engine handles the underlying systems.**
+- DLL/shared library interface
 
 ---
 
-## Architecture
+## Platforms
 
-The engine is built as a DLL and is used by applications built on top of it.
+Tired Engine currently supports:
 
-```text
-Game
- │
- ├── Gameplay
- ├── Game Logic
- ├── Entities
- └── Scenes
-       │
-       ▼
-  Engine API
-       │
-       ▼
-engine.dll
- │
- ├── Application
- ├── Window
- ├── Renderer
- ├── Vulkan
- └── Core Systems
+| Platform | Support |
+|----------|---------|
+| Windows  | ✅ |
+| Linux    | ✅ |
+| macOS    | ✅ |
+
+The goal is to allow applications and games built with Tired Engine to run
+natively across these platforms.
+
+---
+
+## Rendering
+
+The current renderer is built around **Vulkan**.
+
+The renderer is designed to be expandable, with other graphics APIs such as
+**OpenGL** potentially being added in the future.
+
+---
+
+## Building
+
+The project uses **Makefiles** for its build system.
+
+### Requirements
+
+- [Clang](https://clang.llvm.org/)
+- [GNU Make](https://www.gnu.org/software/make/)
+- [Vulkan SDK](https://www.lunarg.com/vulkan-sdk/)
+
+The current Vulkan renderer requires the Vulkan SDK.
+
+Build the engine with:
+
+```bash
+make
