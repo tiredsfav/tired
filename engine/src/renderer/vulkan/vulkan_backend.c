@@ -348,7 +348,7 @@ void vulkan_renderer_backend_on_resized(renderer_backend* backend, u16 width, u1
     cached_framebuffer_height = height;
     context.framebuffer_size_generation++;
 
-    KINFO("Vulkan renderer backend->resized: w/h/gen: %i/%i/%llu", width, height, context.framebuffer_size_generation);
+    // KINFO("Vulkan renderer backend->resized: w/h/gen: %i/%i/%llu", width, height, context.framebuffer_size_generation);
 }
 
 b8 vulkan_renderer_backend_begin_frame(renderer_backend* backend, f32 delta_time) {
@@ -379,7 +379,7 @@ b8 vulkan_renderer_backend_begin_frame(renderer_backend* backend, f32 delta_time
             return false;
         }
 
-        KINFO("Resized, booting.");
+        // KINFO("Resized, booting.");
         return false;
     }
 

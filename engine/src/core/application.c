@@ -230,17 +230,17 @@ b8 application_on_key(u16 code, void* sender, void* listener_inst, event_context
             return true;
         } else if (key_code == KEY_A) {
             // Example on checking for a key
-            KDEBUG("Explicit - A key pressed!");
+            // KDEBUG("Explicit - A key pressed!");
         } else {
-            KDEBUG("'%c' key pressed in window.", key_code);
+            // KDEBUG("'%c' key pressed in window.", key_code);
         }
     } else if (code == EVENT_CODE_KEY_RELEASED) {
         u16 key_code = context.data.u16[0];
         if (key_code == KEY_B) {
             // Example on checking for a key
-            KDEBUG("Explicit - B key released!");
+            // KDEBUG("Explicit - B key released!");
         } else {
-            KDEBUG("'%c' key released in window.", key_code);
+            // KDEBUG("'%c' key released in window.", key_code);
         }
     }
     return false;
@@ -256,16 +256,16 @@ b8 application_on_resized(u16 code, void* sender, void* listener_inst, event_con
             app_state->width = width;
             app_state->height = height;
 
-            KDEBUG("Window resize: %i, %i", width, height);
+            // KDEBUG("Window resize: %i, %i", width, height);
 
             // Handle minimization
             if (width == 0 || height == 0) {
-                KINFO("Window minimized, suspending application.");
+                // KINFO("Window minimized, suspending application.");
                 app_state->is_suspended = true;
                 return true;
             } else {
                 if (app_state->is_suspended) {
-                    KINFO("Window restored, resuming application.");
+                    // KINFO("Window restored, resuming application.");
                     app_state->is_suspended = false;
                 }
                 app_state->game_inst->on_resize(app_state->game_inst, width, height);
