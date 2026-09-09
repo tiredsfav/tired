@@ -1,151 +1,57 @@
 <div align="center">
 
-Game Engine
+# K Engine
 
-A lightweight, low-level game engine written in C.
+### A work-in-progress game engine written in C
 
-Build the game yourself.
-The engine takes care of the underlying systems.
+Build the game yourself.  
+K Engine provides the systems underneath it.
 
-<br>
-
-
-
-
-
-
+![Status](https://img.shields.io/badge/status-work--in--progress-orange)
+![Language](https://img.shields.io/badge/language-C-blue)
+![Renderer](https://img.shields.io/badge/renderer-Vulkan-red)
+![Build System](https://img.shields.io/badge/build-Make-informational)
 
 </div>
 
-About
+---
 
-This is a work-in-progress game engine, developed entirely by one person.
+## About
 
-The goal is to provide the low-level systems required to build a game while leaving the actual game architecture and gameplay entirely up to the developer.
+K Engine is a low-level game engine focused on providing the fundamental systems needed to create a game, while leaving the actual game architecture and gameplay up to the developer.
 
-The engine currently handles:
+The engine currently provides:
 
-🪟 Application & window management
-🎨 Vulkan rendering
-⚙️ Engine core systems
-🔗 DLL interface & exports
-🔨 Makefile-based builds
+- Application and window management
+- Vulkan rendering
+- Core engine systems
+- DLL exports
+- Makefile-based builds
 
-You make the game. The engine handles the boring parts.
+> **You make the game. The engine handles the underlying systems.**
 
-Architecture
+---
 
-The engine is built as a dynamic library and used by separate applications.
+## Architecture
 
-┌──────────────────────┐
-│        Game          │
-│                      │
-│  Gameplay            │
-│  Game Logic          │
-│  Entities            │
-│  Scenes              │
-└──────────┬───────────┘
-           │
-           │ Engine API
-           ▼
-┌──────────────────────┐
-│     engine.dll       │
-│                      │
-│  Application         │
-│  Window              │
-│  Renderer            │
-│  Vulkan              │
-│  Core Systems        │
-└──────────────────────┘
-Requirements
+The engine is built as a DLL and is used by applications built on top of it.
 
-Currently supported build environment:
-
-Requirement	Purpose
-Clang	C compiler
-GNU Make	Build system
-Vulkan SDK	Vulkan development & libraries
-
-Windows is currently the target platform.
-
-The Vulkan SDK must be installed with the VULKAN_SDK environment variable configured.
-
-Building
-
-Build the engine with:
-
-make
-
-The engine will be generated as:
-
-bin/
-└── engine.dll
-
-The testbed can be built using its Makefile:
-
-make
-
-which produces:
-
-bin/
-└── testbed.exe
-
-To clean generated files:
-
-make clean
-Project Structure
-.
-├── engine/       # Engine source
-├── testbed/      # Engine testbed
-├── tests/        # Tests
-├── bin/          # Compiled output
-├── obj/          # Object files
-└── README.md
-Development
-
-The engine is still in early development.
-
-The architecture, renderer, API, build system, and project structure are expected to change as development continues.
-
-Roadmap
-
-Basic engine DLL
-
-Application system
-
-Window creation
-
-Initial Vulkan setup
-
-Renderer development
-
-Input system
-
-Resource management
-
-Audio
-
-Improved game API
-
-Documentation
-
-Example game
-
-Philosophy
-
-The engine isn't meant to tell you how to make your game.
-
-Instead, it provides the foundation and lets you decide what happens on top of it.
-
-The engine provides the tools.
-You build the game.
-
-<div align="center">
-
-🚧 Work in Progress
-
-Made with C, Vulkan, and a lot of time.
-
-Developed by a solo developer.
-
-</div>
+```text
+Game
+ │
+ ├── Gameplay
+ ├── Game Logic
+ ├── Entities
+ └── Scenes
+       │
+       ▼
+  Engine API
+       │
+       ▼
+engine.dll
+ │
+ ├── Application
+ ├── Window
+ ├── Renderer
+ ├── Vulkan
+ └── Core Systems
