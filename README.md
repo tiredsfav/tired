@@ -1,76 +1,151 @@
+<div align="center">
+
 Game Engine
 
-> A work-in-progress game engine written in C, providing the underlying systems needed to build a game.
+A lightweight, low-level game engine written in C.
 
-*> This project is developed entirely by one person.
+Build the game yourself.
+The engine takes care of the underlying systems.
 
-Overview
+<br>
 
-The engine is designed to handle the low-level parts of a game application while leaving the actual game implementation to the developer.
 
-Currently, the engine provides:
 
-Application
-Window management
-Vulkan renderer
-Engine core
-DLL interface
 
-The engine is compiled into a DLL and linked by separate applications such as the testbed.
 
-> Note: The engine is currently a work in progress and its API may change.
 
+
+</div>
+
+About
+
+This is a work-in-progress game engine, developed entirely by one person.
+
+The goal is to provide the low-level systems required to build a game while leaving the actual game architecture and gameplay entirely up to the developer.
+
+The engine currently handles:
+
+🪟 Application & window management
+🎨 Vulkan rendering
+⚙️ Engine core systems
+🔗 DLL interface & exports
+🔨 Makefile-based builds
+
+You make the game. The engine handles the boring parts.
+
+Architecture
+
+The engine is built as a dynamic library and used by separate applications.
+
+┌──────────────────────┐
+│        Game          │
+│                      │
+│  Gameplay            │
+│  Game Logic          │
+│  Entities            │
+│  Scenes              │
+└──────────┬───────────┘
+           │
+           │ Engine API
+           ▼
+┌──────────────────────┐
+│     engine.dll       │
+│                      │
+│  Application         │
+│  Window              │
+│  Renderer            │
+│  Vulkan              │
+│  Core Systems        │
+└──────────────────────┘
 Requirements
 
-The current build system requires:
+Currently supported build environment:
 
-Clang
-GNU Make
-Vulkan SDK
+Requirement	Purpose
+Clang	C compiler
+GNU Make	Build system
+Vulkan SDK	Vulkan development & libraries
 
-The Vulkan SDK must be installed and its VULKAN_SDK environment variable configured.
+Windows is currently the target platform.
 
-> The current Makefiles target Windows and use .dll and .exe outputs.
+The Vulkan SDK must be installed with the VULKAN_SDK environment variable configured.
 
 Building
 
-The engine can be built using:
+Build the engine with:
 
 make
 
-This produces:
+The engine will be generated as:
 
 bin/
 └── engine.dll
 
-The testbed can be built separately using its Makefile:
+The testbed can be built using its Makefile:
+
+make
+
+which produces:
 
 bin/
 └── testbed.exe
 
-To remove generated files:
+To clean generated files:
 
 make clean
 Project Structure
 .
-├── engine          # Engine source code
-├── testbed         # Engine testbed
-├── tests           # Tests
-├── bin             # Compiled DLLs and executables
-├── obj             # Compiled object files
+├── engine/       # Engine source
+├── testbed/      # Engine testbed
+├── tests/        # Tests
+├── bin/          # Compiled output
+├── obj/          # Object files
 └── README.md
+Development
+
+The engine is still in early development.
+
+The architecture, renderer, API, build system, and project structure are expected to change as development continues.
+
+Roadmap
+
+Basic engine DLL
+
+Application system
+
+Window creation
+
+Initial Vulkan setup
+
+Renderer development
+
+Input system
+
+Resource management
+
+Audio
+
+Improved game API
+
+Documentation
+
+Example game
+
 Philosophy
 
-*> You make the game. The engine handles the underlying systems.
+The engine isn't meant to tell you how to make your game.
 
-The engine is intended to provide the foundation for building a game without dictating how the game itself should be structured.
+Instead, it provides the foundation and lets you decide what happens on top of it.
 
-Status
+The engine provides the tools.
+You build the game.
 
-*> Work in progress
+<div align="center">
 
-The engine, renderer, API, and build system are still actively being developed.
+🚧 Work in Progress
 
-Author
+Made with C, Vulkan, and a lot of time.
 
-This engine is developed entirely by one person — me.
+Developed by a solo developer.
+
+</div>
