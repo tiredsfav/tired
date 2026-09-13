@@ -2,6 +2,7 @@
 
 #include "defines.h"
 #include "core/asserts.h"
+#include "renderer/renderer_types.inl"
 
 #include <vulkan/vulkan.h>
 
@@ -10,6 +11,16 @@
     {                                \
         KASSERT(expr == VK_SUCCESS); \
     }
+
+typedef struct vulkan_buffer {
+    u64 total_size;
+    VkBuffer handle;
+    VkBufferUsageFlagBits usage;
+    b8 is_locked;
+    VkDeviceMemory memory;
+    i32 memory_index;
+    u32 memory_property_flags;
+} vulkan_buffer;
 
 typedef struct vulkan_swapchain_support_info {
     VkSurfaceCapabilitiesKHR capabilities;
@@ -128,6 +139,17 @@ typedef struct vulkan_object_shader {
 
     vulkan_pipeline pipeline;
 
+    VkDescriptorPool global_descriptor_pool;
+    VkDescriptorSetLayout global_descriptor_set_layout;
+
+    // One descriptor set per frame - max 3 for triple buffering
+    VkDescriptorSet global_descriptor_sets[3];
+
+    // Global uniform buffer object
+    global_uniform_object global_ubo;
+
+    // Global uniform buffers
+    vulkan_buffer global_uniform_buffer;
 
 } vulkan_object_shader;
 
@@ -160,6 +182,9 @@ typedef struct vulkan_context {
     vulkan_swapchain swapchain;
     vulkan_renderpass main_renderpass;
 
+    vulkan_buffer object_vertex_buffer;
+    vulkan_buffer object_index_buffer;
+
     // darray
     vulkan_command_buffer* graphics_command_buffers;
 
@@ -179,6 +204,9 @@ typedef struct vulkan_context {
     u32 current_frame;
 
     b8 recreating_swapchain;
+
+    u64 geometry_vertex_offset;
+    u64 geometry_index_offset;
 
     i32 (*find_memory_index)(u32 type_filter, u32 property_flags);
 

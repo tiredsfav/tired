@@ -18,7 +18,7 @@ b8 filesystem_open(const char* path, file_modes mode, b8 binary, file_handle* ou
 
     const char* mode_str;
 
-    KINFO("%s", path);
+    // KINFO("%s", path);
 
     if ((mode & FILE_MODE_READ) != 0 && (mode & FILE_MODE_WRITE) != 0) {
         mode_str = binary ? "r+b" : "r+";

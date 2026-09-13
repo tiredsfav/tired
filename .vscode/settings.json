@@ -13,6 +13,17 @@
         "editorCursor.foreground": "#00ff33",
         "editor.lineHighlightBackground": "#111144"
     },
+    "editor.semanticTokenColorCustomizations": {
+        "rules": {
+            "variable": "#b3b3b3",
+            "property": {
+                "foreground": "#8d8d8d",
+            },
+            "parameter": {
+                "foreground": "#cacaca",
+            }
+        }
+    },
     "workbench.statusBar.visible": true,
     "editor.lineNumbers": "on",
     "C_Cpp.clang_format_style": "{ BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 0, NamespaceIndentation: All}",
@@ -68,5 +79,12 @@
         "clock.h": "c",
         "kstring.h": "c",
         "logger.h": "c"
-    }
+    },
+    "workbench.activityBar.autoHide": false,
+    "workbench.activityBar.compact": false,
+    "workbench.settings.editor": "ui",
+    "workbench.colorTheme": "Vira Carbon",
+    "workbench.preferredDarkColorTheme": "Vira Carbon",
+    "workbench.preferredHighContrastColorTheme": "Vira Clay High Contrast",
+    "workbench.preferredHighContrastLightColorTheme": "Vira Teal High Contrast"
 }

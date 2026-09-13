@@ -51,7 +51,7 @@ void initialize_memory(u64* memory_requirement, void* state) {
     platform_zero_memory(&state_ptr->stats, sizeof(state_ptr->stats));
 }
 
-void shutdown_memory(void* state) {
+void shutdown_memory() {
     state_ptr = 0;
 }
 
